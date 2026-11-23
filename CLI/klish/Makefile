@@ -33,7 +33,8 @@ all : $(SRC_REPLACEMENTS)
 			--enable-debug=no \
 			LIBS='$(LDFLAGS_CURL) -L$(LIB_PATH) $(LDFLAGS_PYTHON) -Wl,-rpath=$(LIB_PATH) -lcjson' \
 			CFLAGS='${CFLAGS} -g $(CFLAGS_PYTHON)' \
-			CPPFLAGS='${CPPFLAGS} -I/usr/include/cjson' && \
+			CPPFLAGS='${CPPFLAGS} -I/usr/include/cjson' \
+			LDFLAGS='${LDFLAGS} -Wl,-z,noexecstack' && \
 		make
 
 	mkdir -p $(SONIC_CLI_ROOT)/target/.libs
